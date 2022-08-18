@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function() {
+          var w = window;
+          if (w.ChannelIO) {
+            return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+          }
+          var ch = function() {
+            ch.c(arguments);
+          };
+          ch.q = [];
+          ch.c = function(args) {
+            ch.q.push(args);
+          };
+          w.ChannelIO = ch;
+          function l() {
+            if (w.ChannelIOInitialized) {
+              return;
+            }
+            w.ChannelIOInitialized = true;
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+            s.charset = 'UTF-8';
+            var x = document.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s, x);
+          }
+          if (document.readyState === 'complete') {
+            l();
+          } else if (window.attachEvent) {
+            window.attachEvent('onload', l);
+          } else {
+            window.addEventListener('DOMContentLoaded', l, false);
+            window.addEventListener('load', l, false);
+          }
+        })();
+        ChannelIO('boot', {
+          "pluginKey": "054fbc40-b13b-4f36-9eee-8017dcbdb321"
+        });
+      </script>
+    <title>Document</title>
+</head>
+<body>
+    <p style="color:rgb(0, 0, 0); font-size: xx-large;">파일 양식이 잘못되었습니다. 네이버 스마트 스토어 주문내역 파일이 맞는지 확인해 주세요. </p>
+        <p>해당 오류가 지속될 경우 우측 하단의 버튼을 눌러 연락주시면 감사하겠습니다.</p>
+</body>
+</html>

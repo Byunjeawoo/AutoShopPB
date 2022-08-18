@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ExcelXShop</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@300;500&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="{% static 'style.css' %}"/>
+<script id="applicationScript" type="text/javascript" src="{% static 'script.js' %}"></script>
+<script>
+    (function() {
+      var w = window;
+      if (w.ChannelIO) {
+        return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+      }
+      var ch = function() {
+        ch.c(arguments);
+      };
+      ch.q = [];
+      ch.c = function(args) {
+        ch.q.push(args);
+      };
+      w.ChannelIO = ch;
+      function l() {
+        if (w.ChannelIOInitialized) {
+          return;
+        }
+        w.ChannelIOInitialized = true;
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+        s.charset = 'UTF-8';
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+      }
+      if (document.readyState === 'complete') {
+        l();
+      } else if (window.attachEvent) {
+        window.attachEvent('onload', l);
+      } else {
+        window.addEventListener('DOMContentLoaded', l, false);
+        window.addEventListener('load', l, false);
+      }
+    })();
+    ChannelIO('boot', {
+      "pluginKey": "054fbc40-b13b-4f36-9eee-8017dcbdb321"
+    });
+  </script>
+  <!-- End Channel Plugin -->
+</head>
+<body>
+	
+    <div class="Name">
+    </div>
+        
+    <div id="introduce">
+    </div>
+        <div class="btnSize btn btn-CU" data-toggle="modal" data-target="#myModal">
+            <div id="button_text" >
+                <p style="color: rgb(33, 37, 37); font-size: x-large;">시작하기</p>
+            </div>
+        </div>
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+            
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">데이터 추가</h4>
+            </div>
+                <div class="modal-body">
+                    <p>암호 입력</p>
+                </div>
+                <div class="modal-footer">
+                    <form action="progress/" method="POST" enctype="multipart/form-data" style="display:flex">
+                      {{ form.as_p }}
+                      <!-- <input name="uploadedFile" type="file" class="btn btn-default" type="file" accept=".xlsx" required capture='environment' name="file" onchange='this.value' />
+                      <input name='excelPassword' type='password' class="excelPassword" />  -->
+                      {% csrf_token %}
+                      <input type="submit" class="btn btn-default" value="Upload">
+                    </form>
+                </div>
+            </div>
+          </div>
+</html>
+<!-- Channel Plugin Scripts -->
+
